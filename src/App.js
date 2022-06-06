@@ -21,8 +21,8 @@ function App() {
         <p>Welcome to the vertica test A</p>
         <Clock/>
       </header>
-      <main className="display-area" id={ position!==null ? position:"ideal-position"} >
-        <div><FloatingBlock/></div>
+      <main className="display-area"  >
+        <div id={position !== null ? position : "ideal-position"}><FloatingBlock position={position}/></div>
       </main>
       <footer className='pos-fixed'>
       </footer>

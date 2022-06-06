@@ -61,14 +61,24 @@ footer{
 
 /* toggle positions */
 
-#lower-right{
+/* #lower-right{
   display: flex;
   justify-content:flex-end;
   align-items:end;
-}
+} */
 
 #center{
-  display: flex;
-  justify-content:center;
-  align-items: center;
+  position: fixed;
+  bottom: 50%;
+  right:50%;
+  transform: translate(50%,50%);
+  margin-bottom: 100px;
+}
+
+
+#lower-right{
+  position: fixed;
+  bottom: 0%;
+  right:0%;
+  margin-bottom: 100px;
 }
