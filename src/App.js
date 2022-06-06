@@ -7,7 +7,7 @@ const positionTypes=["center","LowerRight"]
 function App() {
   return (
     <div className="App">
-      <header className="app-header flex-div flex-H-space-bw flex-H-center-V">
+      <header className="app-header flex-div flex-H-space-bw flex-H-center-V pos-fixed">
         <div className='flex-div position-control-div'>
           <p>Postion : </p>
           <div className='flex-div'>
@@ -17,6 +17,9 @@ function App() {
         <p>Welcome to the vertica test A</p>
         <Clock/>
       </header>
+      
+      <footer className='pos-fixed'>
+      </footer>
     </div>
   );
 }

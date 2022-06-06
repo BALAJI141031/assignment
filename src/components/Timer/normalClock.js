@@ -20,6 +20,6 @@ export default function Clock() {
         }
     },[])
   return (
-      <p>{time}</p>
+      <p className='m-right'>{time}</p>
   )
 }

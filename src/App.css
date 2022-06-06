@@ -44,6 +44,16 @@
   padding-right:20px
 }
 
+.pos-fixed{
+  position:fixed;
+  width:100%
+}
+
+footer{
+  bottom: 0;
+  min-height:100px;
+  background-color: orange;
+}
 
 .flex-div{
   display: flex;
@@ -58,12 +68,8 @@
 
 }
 
-.position-control-div > div {
-  margin: 0px 10px;
-}
-
-.position-control-div > div > div {
-  margin-right:10px
+.m-right{
+  margin-right:20px
 }
 
 .position-control-div{
