@@ -42,6 +42,7 @@ footer{
   height:400px; 
   background-color: grey;
   margin-top: 100px;
+  
 }
 
 .floating-block{
@@ -49,4 +50,25 @@ footer{
   height:200px;
   background-color: aqua;
   cursor: pointer;
+}
+
+#ideal-position{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+
+
+/* toggle positions */
+
+#lower-right{
+  display: flex;
+  justify-content:flex-end;
+  align-items:end;
+}
+
+#center{
+  display: flex;
+  justify-content:center;
+  align-items: center;
 }
