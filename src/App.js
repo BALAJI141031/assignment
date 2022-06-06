@@ -17,7 +17,11 @@ function App() {
         <p>Welcome to the vertica test A</p>
         <Clock/>
       </header>
-      
+      <main className='display-area'>
+        <div className='floating-block'>
+
+        </div>
+      </main>
       <footer className='pos-fixed'>
       </footer>
     </div>
