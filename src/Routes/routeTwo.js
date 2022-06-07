@@ -19,12 +19,12 @@ export default function Pagetwo({setpageOneChanges,setPosition}) {
       <h2>I majorly work with techinologies like  vanilla js, React.js HTML5,CSS </h2>
         <p>Exploring Redux Toolkit and i'm going to explore more on JEST(Test driven Developemnt way of writing code) and i wanted to laern Typescript</p>
         <h1>My projects</h1>
-        <Link to="https://spark-library.vercel.app/">SPark library(Video Library)</Link>
-        <Link to="https://sparkcart.vercel.app/">SPark Kart(E-commerce)</Link>
-        <Link to="https://sparkledger.vercel.app/">SPark Ledger(Note taking app)</Link>
+        <a href="https://spark-library.vercel.app/" target="_blank">SPark library(Video Library)</a>
+        <a href="https://sparkcart.vercel.app/" target="_blank">SPark Kart(E-commerce)</a>
+        <a href="https://sparkledger.vercel.app/" target="_blank">SPark Ledger(Note taking app)</a>
         <h3>Social media handles</h3>
-        <Link to="https://github.com/BALAJI141031?tab=repositories">Github</Link>
-        <Link to="https://twitter.com/Balu1031">Twitter</Link>
+        <a href="https://github.com/BALAJI141031?tab=reposihrefries" target="_blank">Github</a>
+        <a href="https://twitter.com/Balu1031" target="_blank">Twitter</a>
         
       </div>
       </div>
