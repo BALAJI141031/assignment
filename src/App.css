@@ -17,12 +17,25 @@ footer{
   background-color: orange;
 }
 
+footer > button {
+  font-size: 24px;
+  border-style: none;
+  padding: 10px;
+  font-weight: 800;
+  background: transparent;
+  cursor: pointer;
+}
+
 .flex-div{
   display: flex;
 }
 
 .flex-H-space-bw{
   justify-content: space-between;
+}
+
+.flex-H-space-center{
+  justify-content: center;
 }
 
 .flex-H-center-V{

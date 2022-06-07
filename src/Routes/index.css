@@ -1,0 +1,45 @@
+.page-two-section{
+    display: grid;
+    grid-template-columns: max-content 1fr;
+}
+
+.navigation-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-style: solid;
+    height:100vh;
+    border-width:0px;
+    border-right-width: 1px;
+    padding-right: 10px;
+}
+
+.navigation-div > button {
+    font-size: larger;
+    font-weight: 800;
+    border-style: none;
+    margin-bottom: 10px;
+    
+}
+
+.navigation-div > button:hover{
+    color: orange;
+    cursor: pointer
+}
+
+.navigation-div > h1 {
+    margin-left:10px
+}
+
+.content-div {
+    justify-self: center;
+    align-self: center;
+}
+
+.content-div > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
