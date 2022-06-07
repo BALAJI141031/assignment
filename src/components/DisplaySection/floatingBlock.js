@@ -1,6 +1,10 @@
-export default function FloatingBlock({position}) {
+
+import './index.css'
+
+export default function FloatingBlock({ position,pageOneChanges }) {
+    
   return (
-      <div className='floating-block'> 
+      <div id='floating-block' className={pageOneChanges && "style-border"}> 
           <p>{position}</p>    
     </div>
   )
