@@ -92,13 +92,8 @@ function App() {
 
     diffX.current = mouseX - dragableDivX;
     diffY.current = mouseY - dragableDivY;
-  };
-  
-
-  
-
-  console.log(position,"hey give me your position")
-  let positionProps
+  };  
+  let positionProps={}
   if (position === "center") {
     positionProps = {
       top: "50%",
@@ -167,7 +162,6 @@ function App() {
           Go to Page 2
        </Link> </button>
         </footer></>} />
-        
         <Route path="/page2" element={<Pagetwo setpageOneChanges={setpageOneChanges} setPosition={setPosition}/>}/>
       </Routes>
       
