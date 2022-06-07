@@ -1,7 +1,6 @@
 import React from 'react'
 import './positionType.css'
-export default function PositionType({ type, setPosition, pageOneChanges,setpageOneChanges }) {
-  console.log("should render while coming from page 2 ", type, pageOneChanges)
+export default function PositionType({ type, setPosition, pageOneChanges,setpageOneChanges,position }) {
   
   const handlePageOne = () => {
     setPosition(type)
@@ -9,7 +8,7 @@ export default function PositionType({ type, setPosition, pageOneChanges,setpage
   }
   return (
       <div className='flex-div flex-H-center-V'>
-      <input type="radio" name='position' className='position-selector' onClick={ handlePageOne} checked={(type === "center" && pageOneChanges)} />      
+      <input type="radio" name='position' className='position-selector' onClick={ handlePageOne} checked={(type === "center" && pageOneChanges) || type===position} />      
       <p>{type}</p>
     </div>
   )

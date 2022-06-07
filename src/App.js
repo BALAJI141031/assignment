@@ -22,7 +22,7 @@ function App() {
              <div className='flex-div position-control-div'>
               <p>Postion : </p>
               <div className='flex-div'>
-                  {positionTypes.map((type) => <PositionType type={type} key={type} setPosition={setPosition} pageOneChanges={pageOneChanges} setpageOneChanges={setpageOneChanges}/>)}
+                  {positionTypes.map((type) => <PositionType type={type} key={type} setPosition={setPosition} pageOneChanges={pageOneChanges} setpageOneChanges={setpageOneChanges} position={position}/>)}
             </div>
            </div>
             <p>Welcome to the vertica test A</p>
