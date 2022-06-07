@@ -52,17 +52,10 @@ footer > button {
 }
 
 .display-area{
-  height:400px; 
+  min-height:400px; 
   background-color: grey;
   margin-top: 100px;
   
-}
-
-#floating-block{
-  width:200px;
-  height:200px;
-  background-color: aqua;
-  cursor: pointer;
 }
 
 #ideal-position{
@@ -81,7 +74,7 @@ footer > button {
 } */
 
 #center{
-  position: fixed;
+  position: absolute;
   bottom: 50%;
   right:50%;
   transform: translate(50%,50%);
@@ -90,9 +83,15 @@ footer > button {
 
 
 #lower-right{
-  position: fixed;
+  position: absolute;
   bottom: 0%;
   right:0%;
   margin-bottom: 100px;
 }
 
+
+.style-border{
+    border-style: solid;
+    border-width: 5px;
+    border-color: blue;
+}

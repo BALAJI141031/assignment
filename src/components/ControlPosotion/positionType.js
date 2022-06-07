@@ -1,8 +1,9 @@
 import React from 'react'
 import './positionType.css'
-export default function PositionType({ type, setPosition, pageOneChanges,setpageOneChanges,position }) {
+export default function PositionType({ type, setPosition, pageOneChanges,setpageOneChanges,position,setToFoat }) {
   
   const handlePageOne = () => {
+    setToFoat(false)
     setPosition(type)
     setpageOneChanges(false)
   }
