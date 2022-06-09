@@ -56,6 +56,7 @@ footer > button {
   background-color: grey;
   margin-top: 100px;
   
+  
 }
 
 #ideal-position{
@@ -73,7 +74,7 @@ footer > button {
   align-items:end;
 } */
 
-#center{
+/* #center{
   position: absolute;
   bottom: 50%;
   right:50%;
@@ -87,8 +88,15 @@ footer > button {
   bottom: 0%;
   right:0%;
   margin-bottom: 100px;
-}
+} */
 
+
+.slider{
+  height: 100px;
+  width:100px;
+  background-color: orangered;
+  position: relative;
+}
 
 .style-border{
     border-style: solid;

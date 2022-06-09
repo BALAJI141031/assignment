@@ -48,67 +48,52 @@ function App() {
   }, []);
 
 
-  const dragableDiv = useRef(null);
-  const boundaryDiv = useRef(null);
-  const isMouseDown = useRef(false);
-  const diffX = useRef(Number(80));
-  const diffY = useRef(Number(30));
+  let sliderbox = useRef(null);
+  let boundary = useRef(null);
 
-  const stopToDrag = () => {
-    isMouseDown.current = false;
-  };
+  function handleMouseDown(e) {
+    e.preventDefault();
+    let shiftX = e.clientX - sliderbox.current.getBoundingClientRect().left;
+    let shiftY = e.clientY - sliderbox.current.getBoundingClientRect().top;
+    function onMouseMove(event) {
+      let newLeft =
+        event.clientX - shiftX - boundary.current.getBoundingClientRect().left;
 
-  const onDragging = ({ clientX: mouseX, clientY: mouseY }) => {
-    const {
-      x: boundaryDivX,
-      y: boundaryDivY
-    } = boundaryDiv?.current?.getBoundingClientRect();
+      let newTop =
+        event.clientY - shiftY - boundary.current.getBoundingClientRect().top;
+      if (newLeft < 0) {
+        newLeft = 0;
+      }
+      if (newTop < 0) {
+        newTop = 0;
+      }
 
-    const finalX = mouseX - diffX.current;
-    const finalY = mouseY - diffY.current;
-    if (
-      isMouseDown.current &&
-      (boundaryDiv.current ).offsetWidth -
-        (dragableDiv.current ).offsetWidth >
-        finalX &&
-      (boundaryDiv.current ).offsetHeight -
-        (dragableDiv.current ).offsetHeight >
-        finalY &&
-      boundaryDivX < finalX &&
-      boundaryDivY < finalY
-    ) {
-      (dragableDiv.current ).style.left = `${finalX}px`;
-      (dragableDiv.current ).style.top = `${finalY}px`;
+      let rightEdge =
+        boundary.current.offsetWidth - sliderbox.current.offsetWidth;
+
+      let topEdge =
+        boundary.current.offsetHeight - sliderbox.current.offsetHeight;
+      if (newLeft > rightEdge) {
+        newLeft = rightEdge;
+      }
+      if (newTop > topEdge) {
+        newTop = '400 px';
+      }
+      sliderbox.current.style.left = newLeft + 'px';
+      sliderbox.current.style.top = newTop + 'px';
+      console.log(newLeft + 'px', newTop + 'px');
     }
-  };
 
-  const startToDrag = ({ clientX: mouseX, clientY: mouseY }) => {
-    setPosition("hey you are trying to drag me please drag from here.....")
-    isMouseDown.current = true;
-    const {
-      x: dragableDivX,
-      y: dragableDivY
-    } = dragableDiv?.current?.getBoundingClientRect() ;
+    function onMouseUp() {
+      sliderbox.current.removeEventListener('mouseup', onMouseUp);
+      sliderbox.current.removeEventListener('mousemove', onMouseMove);
+    }
 
-    diffX.current = mouseX - dragableDivX;
-    diffY.current = mouseY - dragableDivY;
-  };  
-  let positionProps={}
-  if (position === "center") {
-    positionProps = {
-      top: "50%",
-      left: "50%",
-      transform: "translateX(-50%)",
-      transform: "translateY(-50%)"
-    }
-  } else if (position === "lower-right") {
-    console.log("yes it is comingg,inside lower right after dreag")
-    positionProps = {
-      bottom: "0%",
-      right: "0%",
-      marginBottom:"100px"
-    }
+    sliderbox.current.addEventListener('mousemove', onMouseMove);
+    sliderbox.current.addEventListener('mouseup', onMouseUp);
   }
+
+ 
   return (
     <div className="App">     
       <Routes>
@@ -124,39 +109,18 @@ function App() {
           <p>Welcome to the vertica test A</p>
          <Clock/>
        </header>
-           <div
-            ref={boundaryDiv}
-            style={{ height: "400px","background-color": "grey","margin-top": "100px",  }}>
-       <div style={floatingBlockStatus?{display:"none"}:{display:"block"}}> <div
-            ref={dragableDiv}
-            onMouseMove={(evt) => {
-            onDragging(evt);
+      
+             <div className="display-area" ref={boundary}>
+      <div
+        className="slider"
+        onMouseDown={(e) => handleMouseDown(e)}
+        ref={sliderbox}
+        onDragStart={function () {
+          return false;
         }}
-            onMouseOut={() => stopToDrag()}
-            onMouseUp={() => stopToDrag()}
-                onMouseDown={(evt) => {
-                  startToDrag(evt)
-                  setToFoat(true)
-                }
-                }
-                style={foating ? {
-          height: "200px",
-          width: "200px",
-          backgroundColor: "#8777ff",
-          color: "white",
-          position: "absolute",
-          
-        }:{
-            position:"fixed",
-            height: "200px",
-            width: "200px",
-            backgroundColor: "#8777ff",
-            color: "white",
-            ...positionProps,   
-        }}
-        className={pageOneChanges && "style-border"}                  
-      ><p style={{fontSize:"20px", padding:"10px"}}>{position}</p> </div>
-    </div> </div>
+      ></div>
+    </div>
+
         <footer className='pos-fixed flex-div flex-H-space-center flex-H-center-V'>
        <button> <Link to="/page2">
           Go to Page 2
