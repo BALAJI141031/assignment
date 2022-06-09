@@ -108,11 +108,15 @@ function App() {
 
       function onMouseUp() {
         setToDrag("Dragged position")
-        sliderbox.current.removeEventListener('mouseup', onMouseUp);
-        sliderbox.current.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
+        document.removeEventListener('mousemove', onMouseMove);
       }
-      sliderbox.current.addEventListener('mousemove', onMouseMove);
-      sliderbox.current.addEventListener('mouseup', onMouseUp);
+      document.addEventListener('mousemove', onMouseMove);
+      document.addEventListener('mouseup', onMouseUp);
+
+      sliderbox.current.ondragstart = function() {
+      return false;
+    };
     } 
   }
   return (
@@ -140,9 +144,7 @@ function App() {
                 style={floatingBlockStatus ? { display: "none" } : { display: "block" }}       
                 className={pageOneChanges && "style-border"}
         ref={sliderbox}
-        onDragStart={function () {
-          return false;
-        }}
+       
               >
                 
                 {isItdragging}
