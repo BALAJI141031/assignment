@@ -80,8 +80,8 @@ footer > button {
   top:50% ;
   transform: translate(-50%, -50%);
   background-color: orangered;
-  height: 100px;
-  width:100px;
+  height: 200px;
+  width:200px;
   color: aliceblue;
   font-size: 20px;
 }
@@ -92,8 +92,8 @@ footer > button {
   bottom:0% ;
   margin-bottom:100px ;
   background-color: orangered;
-  height: 100px;
-  width:100px;
+  height: 200px;
+  width:200px;
   color: aliceblue;
  font-size: 20px;
 } 
