@@ -50,6 +50,7 @@ function App() {
   let activePosition
   let sliderbox = useRef(null);
   let boundary = useRef(null);
+  let boundaryForLowerRight=useRef(null)
 
   if (position === "center") {
     if (sliderbox.current) {
@@ -71,7 +72,7 @@ function App() {
 
   function handleMouseDown(e) {
     e.preventDefault();
-    let prevPositionY=e.target.offsetHeight+e.target.offsetTop
+    let prevPositionY = e.target.offsetHeight + e.target.offsetTop - 50
     if (prevPositionY <= 500) { 
       setPosition((prev) => null)
       setToDrag(true)
@@ -119,6 +120,55 @@ function App() {
     };
     } 
   }
+
+  function  handleLowerRight(e) {
+    e.preventDefault();     
+      let shiftX = e.clientX - sliderbox.current.getBoundingClientRect().left;
+      let shiftY = e.clientY - sliderbox.current.getBoundingClientRect().bottom;
+      function onMouseMove(event) {
+        setToDrag("Dragging")
+        let newLeft =
+          event.clientX - shiftX - boundaryForLowerRight.current.getBoundingClientRect().top;
+
+        let newTop=
+          event.clientY - shiftY - boundaryForLowerRight.current.getBoundingClientRect().top;
+        
+        if (newLeft < 0) {
+          newLeft = 0;
+        }
+
+        if (newTop < 0) {
+          newTop = 0;
+        }
+
+
+        let rightEdge =
+          boundaryForLowerRight.current.offsetWidth - sliderbox.current.offsetWidth;
+        let bottomEdge =
+          boundaryForLowerRight.current.offsetHeight - sliderbox.current.offsetHeight;
+        if (newLeft > rightEdge) {
+          newLeft = rightEdge;
+        }
+        if (newTop <= bottomEdge) {
+          newTop = bottomEdge;
+        }
+
+        sliderbox.current.style.left = newLeft + 'px';
+        sliderbox.current.style.top = newTop + 'px';
+      }
+
+      function onMouseUp() {
+        setToDrag("lower-right")
+        document.removeEventListener('mouseup', onMouseUp);
+        document.removeEventListener('mousemove', onMouseMove);
+      }
+      document.addEventListener('mousemove', onMouseMove);
+      document.addEventListener('mouseup', onMouseUp);
+
+      sliderbox.current.ondragstart = function() {
+      return false;
+    };
+  }
   return (
     <div className="App">     
       <Routes>
@@ -134,22 +184,30 @@ function App() {
           <p>Welcome to the vertica test A</p>
          <Clock/>
        </header>
-      
+      <div id={position==="lower-right" && "outer-boundary"} ref={boundaryForLowerRight}>
       <div className="display-area" ref={boundary}>
       <div
         id={ position === null ? "slider" : activePosition}
-          onMouseDown={(e) => {
-          handleMouseDown(e)}
+                  onMouseDown={(e) => {
+                    if (position === "lower-right") {
+                      handleLowerRight(e)
+                    }
+                      else {
+                      
+                      handleMouseDown(e)
+                    }
+                  }
         }
-                style={floatingBlockStatus ? { display: "none" } : { display: "block" }}       
-                className={pageOneChanges && "style-border"}
+        style={floatingBlockStatus ? { display: "none" } : { display: "block" }}       
+        className={pageOneChanges && "style-border"}
         ref={sliderbox}
        
               >
                 
                 {isItdragging}
       </div>
-    </div>
+              </div>
+              </div>
 
         <footer className='pos-fixed flex-div flex-H-space-center flex-H-center-V'>
        <button> <Link to="/page2">
