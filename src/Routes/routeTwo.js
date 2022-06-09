@@ -1,7 +1,7 @@
 import React from 'react'
 import './index.css'
 import { Link } from 'react-router-dom'
-export default function Pagetwo({setpageOneChanges,setPosition}) {
+export default function Pagetwo({setpageOneChanges,setPosition,setToDrag}) {
   return <div className='page-two-section'>
 
     <div className='navigation-div'>
@@ -9,6 +9,7 @@ export default function Pagetwo({setpageOneChanges,setPosition}) {
       <button onClick={() => {
         setpageOneChanges(true)
         setPosition("center")
+        setToDrag("center")
       }}><Link to="/">Back</Link></button>
     </div>
     <div className='content-div'>

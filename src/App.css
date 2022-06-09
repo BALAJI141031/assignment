@@ -74,29 +74,41 @@ footer > button {
   align-items:end;
 } */
 
-/* #center{
-  position: absolute;
-  bottom: 50%;
-  right:50%;
-  transform: translate(50%,50%);
-  margin-bottom: 100px;
+#center{
+  position: fixed;
+  left: 50% ;
+  top:50% ;
+  transform: translate(-50%, -50%);
+  background-color: orangered;
+  height: 100px;
+  width:100px;
+  color: aliceblue;
+  font-size: 20px;
 }
 
-
 #lower-right{
-  position: absolute;
-  bottom: 0%;
-  right:0%;
-  margin-bottom: 100px;
-} */
+   position: fixed;
+  right: 0% ;
+  bottom:0% ;
+  margin-bottom:100px ;
+  background-color: orangered;
+  height: 100px;
+  width:100px;
+  color: aliceblue;
+ font-size: 20px;
+} 
 
 
-.slider{
+#slider{
   height: 100px;
   width:100px;
   background-color: orangered;
   position: relative;
+  /* color: aliceblue;
+  font-size: 20px; */
 }
+
+
 
 .style-border{
     border-style: solid;
